@@ -37,7 +37,7 @@ if [ "$release" -eq 11 ]; then
         bsdmainutils cron vesta vesta-nginx vesta-php expect libmail-dkim-perl
         unrar-free vim-common net-tools unzip iptables"
 elif [ "$release" -eq 10 ]; then
-    software="nginx
+    software="nginx apache2 apache2-utils
         libapache2-mod-fcgid php7.4-fpm php7.4
         php7.4-common php7.4-cgi php7.4-mysql php7.4-curl php7.4-fpm php7.4-pgsql awstats
         webalizer vsftpd proftpd-basic bind9 exim4 exim4-daemon-heavy
@@ -55,7 +55,7 @@ elif [ "$release" -eq 9 ]; then
     echo "Are you sure you want to continue with Debian 9 ?"
     read -p "==================================================="
     software="nginx apache2 apache2-utils apache2-suexec-custom
-        libapache2-mod-ruid2 libapache2-mod-fcgid php7.4
+        libapache2-mod-ruid2 libapache2-mod-fcgid libapache2-mod-php php7.4
         php7.4-common php7.4-cgi php7.4-mysql php7.4-curl php7.4-fpm php7.4-pgsql awstats
         webalizer vsftpd proftpd-basic bind9 exim4 exim4-daemon-heavy
         clamav-daemon spamassassin dovecot-imapd dovecot-pop3d roundcube-core
