@@ -1002,15 +1002,15 @@ if [ "$release" -eq 10 ]; then
     ln -s /usr/local/vesta/data/templates/web/nginx/hosting.tpl /usr/local/vesta/data/templates/web/nginx/default.tpl
     ln -s /usr/local/vesta/data/templates/web/nginx/hosting.stpl /usr/local/vesta/data/templates/web/nginx/default.stpl
 
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.sh /usr/local/vesta/data/templates/web/apache2/hosting.sh
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.tpl /usr/local/vesta/data/templates/web/apache2/hosting.tpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.stpl /usr/local/vesta/data/templates/web/apache2/hosting.stpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.sh /usr/local/vesta/data/templates/web/apache2/default.sh
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.tpl /usr/local/vesta/data/templates/web/apache2/default.tpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.stpl /usr/local/vesta/data/templates/web/apache2/default.stpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.sh /usr/local/vesta/data/templates/web/apache2/hosting.sh
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.tpl /usr/local/vesta/data/templates/web/apache2/hosting.tpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.stpl /usr/local/vesta/data/templates/web/apache2/hosting.stpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.sh /usr/local/vesta/data/templates/web/apache2/default.sh
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.tpl /usr/local/vesta/data/templates/web/apache2/default.tpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.stpl /usr/local/vesta/data/templates/web/apache2/default.stpl
     
-    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.stpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-74.stpl
-    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.tpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-74.tpl
+    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.stpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-73.stpl
+    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.tpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-73.tpl
 fi
 if [ "$release" -eq 11 ]; then
     echo "== Symlink missing templates"
@@ -1018,15 +1018,15 @@ if [ "$release" -eq 11 ]; then
     ln -s /usr/local/vesta/data/templates/web/nginx/hosting.tpl /usr/local/vesta/data/templates/web/nginx/default.tpl
     ln -s /usr/local/vesta/data/templates/web/nginx/hosting.stpl /usr/local/vesta/data/templates/web/nginx/default.stpl
 
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.sh /usr/local/vesta/data/templates/web/apache2/hosting.sh
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.tpl /usr/local/vesta/data/templates/web/apache2/hosting.tpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.stpl /usr/local/vesta/data/templates/web/apache2/hosting.stpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.sh /usr/local/vesta/data/templates/web/apache2/default.sh
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.tpl /usr/local/vesta/data/templates/web/apache2/default.tpl
-    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-74.stpl /usr/local/vesta/data/templates/web/apache2/default.stpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.sh /usr/local/vesta/data/templates/web/apache2/hosting.sh
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.tpl /usr/local/vesta/data/templates/web/apache2/hosting.tpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.stpl /usr/local/vesta/data/templates/web/apache2/hosting.stpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.sh /usr/local/vesta/data/templates/web/apache2/default.sh
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.tpl /usr/local/vesta/data/templates/web/apache2/default.tpl
+    ln -s /usr/local/vesta/data/templates/web/apache2/PHP-FPM-73.stpl /usr/local/vesta/data/templates/web/apache2/default.stpl
     
-    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.stpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-74.stpl
-    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.tpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-74.tpl
+    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.stpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-73.stpl
+    ln  -s /usr/local/vesta/data/templates/web/nginx/php-fpm/default.tpl /usr/local/vesta/data/templates/web/nginx/php-fpm/PHP-FPM-73.tpl
 fi
 
 echo "== Set nameservers address"
