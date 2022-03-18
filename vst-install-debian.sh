@@ -19,6 +19,11 @@ release=$(cat /etc/debian_version | tr "." "\n" | head -n1)
 codename="$(cat /etc/os-release |grep VERSION= |cut -f 2 -d \(|cut -f 1 -d \))"
 vestacp="$VESTA/install/$VERSION/$release"
 
+apt -y install lsb-release apt-transport-https ca-certificates
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee
+apt update
+
 if [ "$release" -eq 11 ]; then
     software="nginx apache2 apache2-utils
         libapache2-mod-fcgid php-fpm php
@@ -1133,15 +1138,15 @@ if [ "$phpfpm" = 'yes' ]; then
         ensure_startup $currentservice
         ensure_start $currentservice
     elif [ "$release" -eq 10 ]; then
-        cp -f $vestacp/php-fpm/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-        #update-rc.d php7.3-fpm defaults
-        currentservice='php7.3-fpm'
+        cp -f $vestacp/php-fpm/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+        #update-rc.d php7.4-fpm defaults
+        currentservice='php7.4-fpm'
         ensure_startup $currentservice
         ensure_start $currentservice
     elif [ "$release" -eq 9 ]; then
-        cp -f $vestacp/php-fpm/www.conf /etc/php/7.0/fpm/pool.d/www.conf
-        #update-rc.d php7.0-fpm defaults
-        currentservice='php7.0-fpm'
+        cp -f $vestacp/php-fpm/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+        #update-rc.d php7.4-fpm defaults
+        currentservice='php7.4-fpm'
         ensure_startup $currentservice
         ensure_start $currentservice
     else
@@ -1675,14 +1680,14 @@ if [ "$named" = 'yes' ]; then
 fi
 
 if [ "$release" -eq 10 ]; then
-  if [ -f "/etc/php/7.3/fpm/pool.d/$servername.conf" ]; then
+  if [ -f "/etc/php/7.4/fpm/pool.d/$servername.conf" ]; then
     echo "== FPM pool.d $servername tweaks"
-    sed -i "/^group =/c\group = www-data" /etc/php/7.3/fpm/pool.d/$servername.conf
-    sed -i "/max_execution_time/c\php_admin_value[max_execution_time] = 900" /etc/php/7.3/fpm/pool.d/$servername.conf
-    sed -i "/request_terminate_timeout/c\request_terminate_timeout = 900s" /etc/php/7.3/fpm/pool.d/$servername.conf
-    sed -i "s|80M|800M|g" /etc/php/7.3/fpm/pool.d/$servername.conf
-    sed -i "s|256M|512M|g" /etc/php/7.3/fpm/pool.d/$servername.conf
-    service php7.3-fpm restart
+    sed -i "/^group =/c\group = www-data" /etc/php/7.4/fpm/pool.d/$servername.conf
+    sed -i "/max_execution_time/c\php_admin_value[max_execution_time] = 900" /etc/php/7.4/fpm/pool.d/$servername.conf
+    sed -i "/request_terminate_timeout/c\request_terminate_timeout = 900s" /etc/php/7.4/fpm/pool.d/$servername.conf
+    sed -i "s|80M|800M|g" /etc/php/7.4/fpm/pool.d/$servername.conf
+    sed -i "s|256M|512M|g" /etc/php/7.4/fpm/pool.d/$servername.conf
+    service php7.4-fpm restart
     ln -s /var/lib/roundcube /var/lib/roundcube/webmail
     /usr/local/vesta/bin/v-change-web-domain-proxy-tpl 'admin' "$servername" 'hosting-webmail-phpmyadmin' 'jpg,jpeg,gif,png,ico,svg,css,zip,tgz,gz,rar,bz2,doc,xls,exe,pdf,ppt,txt,odt,ods,odp,odf,tar,wav,bmp,rtf,js,mp3,avi,mpeg,flv,woff,woff2' 'no'
   fi
@@ -1751,10 +1756,10 @@ $VESTA/bin/v-add-cron-vesta-autoupdate
 
 echo "=== Installing additional PHP libs"
 if [ "$release" -eq 9 ]; then
-  apt-get -y install php7.0-apcu php7.0-mbstring php7.0-bcmath php7.0-curl php7.0-gd php7.0-intl php7.0-mcrypt php7.0-mysql php7.0-mysqlnd php7.0-pdo php7.0-soap php7.0-json php7.0-xml php7.0-zip php7.0-memcache php7.0-memcached php7.0-zip php7.0-imagick php7.0-imap
+  apt-get -y install php7.4-apcu php7.4-mbstring php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mcrypt php7.4-mysql php7.4-mysqlnd php7.4-pdo php7.4-soap php7.4-json php7.4-xml php7.4-zip php7.4-memcache php7.4-memcached php7.4-zip php7.4-imagick php7.4-imap
 fi
 if [ "$release" -eq 10 ]; then
-  apt-get -y install php7.3-apcu php7.3-mbstring php7.3-bcmath php7.3-curl php7.3-gd php7.3-intl php7.3-mysql php7.3-mysqlnd php7.3-pdo php7.3-soap php7.3-json php7.3-xml php7.3-zip php7.3-memcache php7.3-memcached php7.3-zip php7.3-imagick php7.3-imap
+  apt-get -y install php7.4-apcu php7.4-mbstring php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-mysqlnd php7.4-pdo php7.4-soap php7.4-json php7.4-xml php7.4-zip php7.4-memcache php7.4-memcached php7.4-zip php7.4-imagick php7.4-imap
 fi
 if [ "$release" -eq 11 ]; then
   apt-get -y install php7.4-apcu php7.4-mbstring php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-mysqlnd php7.4-pdo php7.4-soap php7.4-json php7.4-xml php7.4-zip php7.4-memcache php7.4-memcached php7.4-zip php7.4-imagick php7.4-imap
@@ -1766,32 +1771,32 @@ chmod a=rw /var/log/php-mail.log
 if [ "$release" -eq 9 ]; then
   if [ "$apache" = 'yes' ]; then
     if [ $memory -lt 10000000 ]; then
-      echo "=== Patching php7.0-vps"
+      echo "=== Patching php7.4-vps"
       mkdir -p /root/vesta-temp-dl/vesta/patch
-      cp $vestacp/php/php7.0-vps.patch /root/vesta-temp-dl/vesta/patch/php7.0-vps.patch
-      patch -p1 --directory=/ < /root/vesta-temp-dl/vesta/patch/php7.0-vps.patch
+      cp $vestacp/php/php7.4-vps.patch /root/vesta-temp-dl/vesta/patch/php7.4-vps.patch
+      patch -p1 --directory=/ < /root/vesta-temp-dl/vesta/patch/php7.4-vps.patch
     fi
     if [ $memory -gt 9999999 ]; then
-      echo "=== Patching php7.0-dedi"
+      echo "=== Patching php7.4-dedi"
       mkdir -p /root/vesta-temp-dl/vesta/patch
-      cp $vestacp/php/php7.0-dedi.patch /root/vesta-temp-dl/vesta/patch/php7.0-dedi.patch
-      patch -p1 --directory=/ < /root/vesta-temp-dl/vesta/patch/php7.0-dedi.patch
+      cp $vestacp/php/php7.4-dedi.patch /root/vesta-temp-dl/vesta/patch/php7.4-dedi.patch
+      patch -p1 --directory=/ < /root/vesta-temp-dl/vesta/patch/php7.4-dedi.patch
     fi
   fi
-  update-alternatives --set php /usr/bin/php7.0
+  update-alternatives --set php /usr/bin/php7.4
 fi
 
 if [ "$release" -eq 10 ]; then
   if [ $memory -lt 10000000 ]; then
-    echo "=== Patching php7.3-vps"
-    patch /etc/php/7.3/fpm/php.ini < $vestacp/php/php7.3-vps.patch
+    echo "=== Patching php7.4-vps"
+    patch /etc/php/7.4/fpm/php.ini < $vestacp/php/php7.4-vps.patch
   fi
   if [ $memory -gt 9999999 ]; then
-    echo "=== Patching php7.3-dedi"
-    patch /etc/php/7.3/fpm/php.ini < $vestacp/php/php7.3-dedi.patch
+    echo "=== Patching php7.4-dedi"
+    patch /etc/php/7.4/fpm/php.ini < $vestacp/php/php7.4-dedi.patch
   fi
-  update-alternatives --set php /usr/bin/php7.3
-  service php7.3-fpm restart
+  update-alternatives --set php /usr/bin/php7.4
+  service php7.4-fpm restart
 fi
 
 if [ "$release" -eq 11 ]; then
